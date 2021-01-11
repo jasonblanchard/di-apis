@@ -1,0 +1,67 @@
+syntax = "proto3";
+package messages.notebook.v2;
+option go_package = "github.com/jasonblanchard/di-apis/gen/pb-go/notebook/v2";
+
+import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+
+message Principal {
+  enum Type {
+    USER = 0;
+  }
+
+  Type type = 1;
+  string id = 2;
+}
+
+message ReadEntryGRPCRequest {
+  message Payload {
+    string id = 1;
+  }
+
+  Principal principal = 1;
+  Payload payload = 2;
+}
+
+message ReadEntryGRPCResponse {
+  message Payload {
+    string id = 1;
+    string text = 2;
+    string creator_id = 3;
+    google.protobuf.Timestamp created_at = 4;
+    google.protobuf.Timestamp updated_at = 5;
+  }
+
+  Payload payload = 1;
+}
+
+message StartNewEntryGRPCRequest {
+  message Payload {
+    string creator_id = 1;
+  }
+
+  Principal principal = 1;
+  Payload payload = 2;
+}
+
+message StartNewEntryGRPCResponse {
+  message Payload {
+    string id = 1;
+  }
+
+  Payload payload = 1;
+}
+
+service Notebook {
+  rpc ReadEntry(ReadEntryGRPCRequest) returns (ReadEntryGRPCResponse) {
+    option (google.api.http) = {
+      get: "/entry"
+    };
+  }
+  rpc StartNewEntry(StartNewEntryGRPCRequest) returns (StartNewEntryGRPCResponse) {
+    option (google.api.http) = {
+      post: "/entry"
+      body: "*"
+    };
+  }
+}
