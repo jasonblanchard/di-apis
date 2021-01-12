@@ -1,6 +1,6 @@
 syntax = "proto3";
-package messages.notebook.v2;
-option go_package = "github.com/jasonblanchard/di-apis/gen/pb-go/notebook/v2";
+package notebook.v2;
+option go_package = "notebook/v2";
 
 import "google/protobuf/timestamp.proto";
 import "google/api/annotations.proto";
