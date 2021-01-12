@@ -1,4 +1,4 @@
-module github.com/jasonblanchard/di-messages
+module github.com/jasonblanchard/di-apis
 
 go 1.15
 
