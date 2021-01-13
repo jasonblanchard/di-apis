@@ -32,12 +32,29 @@ var _ = utilities.NewDoubleArray
 var _ = metadata.Join
 
 var (
-	filter_Notebook_ReadEntry_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_Notebook_ReadEntry_0 = &utilities.DoubleArray{Encoding: map[string]int{"payload": 0, "id": 1}, Base: []int{1, 1, 1, 0}, Check: []int{0, 1, 2, 3}}
 )
 
 func request_Notebook_ReadEntry_0(ctx context.Context, marshaler runtime.Marshaler, client NotebookClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ReadEntryGRPCRequest
 	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["payload.id"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "payload.id")
+	}
+
+	err = runtime.PopulateFieldFromPath(&protoReq, "payload.id", val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "payload.id", err)
+	}
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
@@ -54,6 +71,23 @@ func request_Notebook_ReadEntry_0(ctx context.Context, marshaler runtime.Marshal
 func local_request_Notebook_ReadEntry_0(ctx context.Context, marshaler runtime.Marshaler, server NotebookServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ReadEntryGRPCRequest
 	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["payload.id"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "payload.id")
+	}
+
+	err = runtime.PopulateFieldFromPath(&protoReq, "payload.id", val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "payload.id", err)
+	}
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
@@ -238,9 +272,9 @@ func RegisterNotebookHandlerClient(ctx context.Context, mux *runtime.ServeMux, c
 }
 
 var (
-	pattern_Notebook_ReadEntry_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"entry"}, ""))
+	pattern_Notebook_ReadEntry_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v2", "entries", "payload.id"}, ""))
 
-	pattern_Notebook_StartNewEntry_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"entry"}, ""))
+	pattern_Notebook_StartNewEntry_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v2", "entries"}, ""))
 )
 
 var (

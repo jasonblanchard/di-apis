@@ -16,51 +16,7 @@
     "application/json"
   ],
   "paths": {
-    "/entry": {
-      "get": {
-        "operationId": "Notebook_ReadEntry",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/v2ReadEntryGRPCResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "principal.type",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "enum": [
-              "USER"
-            ],
-            "default": "USER"
-          },
-          {
-            "name": "principal.id",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "payload.id",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "Notebook"
-        ]
-      },
+    "/v2/entries": {
       "post": {
         "operationId": "Notebook_StartNewEntry",
         "responses": {
@@ -85,6 +41,52 @@
             "schema": {
               "$ref": "#/definitions/v2StartNewEntryGRPCRequest"
             }
+          }
+        ],
+        "tags": [
+          "Notebook"
+        ]
+      }
+    },
+    "/v2/entries/{payload.id}": {
+      "get": {
+        "operationId": "Notebook_ReadEntry",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v2ReadEntryGRPCResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "payload.id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "principal.type",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "USER"
+            ],
+            "default": "USER"
+          },
+          {
+            "name": "principal.id",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [

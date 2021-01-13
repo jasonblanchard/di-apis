@@ -55,12 +55,12 @@ message StartNewEntryGRPCResponse {
 service Notebook {
   rpc ReadEntry(ReadEntryGRPCRequest) returns (ReadEntryGRPCResponse) {
     option (google.api.http) = {
-      get: "/entry"
+      get: "/v2/entries/{payload.id}"
     };
   }
   rpc StartNewEntry(StartNewEntryGRPCRequest) returns (StartNewEntryGRPCResponse) {
     option (google.api.http) = {
-      post: "/entry"
+      post: "/v2/entries"
       body: "*"
     };
   }
