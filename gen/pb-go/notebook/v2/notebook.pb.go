@@ -66,7 +66,183 @@ func (x Principal_Type) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use Principal_Type.Descriptor instead.
 func (Principal_Type) EnumDescriptor() ([]byte, []int) {
-	return file_notebook_proto_rawDescGZIP(), []int{0, 0}
+	return file_notebook_proto_rawDescGZIP(), []int{3, 0}
+}
+
+type GetEntryRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+}
+
+func (x *GetEntryRequest) Reset() {
+	*x = GetEntryRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_notebook_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetEntryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetEntryRequest) ProtoMessage() {}
+
+func (x *GetEntryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_notebook_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetEntryRequest.ProtoReflect.Descriptor instead.
+func (*GetEntryRequest) Descriptor() ([]byte, []int) {
+	return file_notebook_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *GetEntryRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type Entry struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Output only.
+	Id        string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Text      string `protobuf:"bytes,2,opt,name=text,proto3" json:"text,omitempty"`
+	CreatorId string `protobuf:"bytes,3,opt,name=creator_id,json=creatorId,proto3" json:"creator_id,omitempty"`
+	// Output only.
+	CreatedAt *timestamp.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	// Output only.
+	UpdatedAt *timestamp.Timestamp `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+}
+
+func (x *Entry) Reset() {
+	*x = Entry{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_notebook_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Entry) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Entry) ProtoMessage() {}
+
+func (x *Entry) ProtoReflect() protoreflect.Message {
+	mi := &file_notebook_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Entry.ProtoReflect.Descriptor instead.
+func (*Entry) Descriptor() ([]byte, []int) {
+	return file_notebook_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *Entry) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Entry) GetText() string {
+	if x != nil {
+		return x.Text
+	}
+	return ""
+}
+
+func (x *Entry) GetCreatorId() string {
+	if x != nil {
+		return x.CreatorId
+	}
+	return ""
+}
+
+func (x *Entry) GetCreatedAt() *timestamp.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *Entry) GetUpdatedAt() *timestamp.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+type CreateEntryRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Entry *Entry `protobuf:"bytes,2,opt,name=entry,proto3" json:"entry,omitempty"`
+}
+
+func (x *CreateEntryRequest) Reset() {
+	*x = CreateEntryRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_notebook_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CreateEntryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateEntryRequest) ProtoMessage() {}
+
+func (x *CreateEntryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_notebook_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateEntryRequest.ProtoReflect.Descriptor instead.
+func (*CreateEntryRequest) Descriptor() ([]byte, []int) {
+	return file_notebook_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *CreateEntryRequest) GetEntry() *Entry {
+	if x != nil {
+		return x.Entry
+	}
+	return nil
 }
 
 type Principal struct {
@@ -81,7 +257,7 @@ type Principal struct {
 func (x *Principal) Reset() {
 	*x = Principal{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_notebook_proto_msgTypes[0]
+		mi := &file_notebook_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -94,7 +270,7 @@ func (x *Principal) String() string {
 func (*Principal) ProtoMessage() {}
 
 func (x *Principal) ProtoReflect() protoreflect.Message {
-	mi := &file_notebook_proto_msgTypes[0]
+	mi := &file_notebook_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -107,7 +283,7 @@ func (x *Principal) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Principal.ProtoReflect.Descriptor instead.
 func (*Principal) Descriptor() ([]byte, []int) {
-	return file_notebook_proto_rawDescGZIP(), []int{0}
+	return file_notebook_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Principal) GetType() Principal_Type {
@@ -124,430 +300,6 @@ func (x *Principal) GetId() string {
 	return ""
 }
 
-type ReadEntryGRPCRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Principal *Principal                    `protobuf:"bytes,1,opt,name=principal,proto3" json:"principal,omitempty"`
-	Payload   *ReadEntryGRPCRequest_Payload `protobuf:"bytes,2,opt,name=payload,proto3" json:"payload,omitempty"`
-}
-
-func (x *ReadEntryGRPCRequest) Reset() {
-	*x = ReadEntryGRPCRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_notebook_proto_msgTypes[1]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *ReadEntryGRPCRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ReadEntryGRPCRequest) ProtoMessage() {}
-
-func (x *ReadEntryGRPCRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_notebook_proto_msgTypes[1]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ReadEntryGRPCRequest.ProtoReflect.Descriptor instead.
-func (*ReadEntryGRPCRequest) Descriptor() ([]byte, []int) {
-	return file_notebook_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *ReadEntryGRPCRequest) GetPrincipal() *Principal {
-	if x != nil {
-		return x.Principal
-	}
-	return nil
-}
-
-func (x *ReadEntryGRPCRequest) GetPayload() *ReadEntryGRPCRequest_Payload {
-	if x != nil {
-		return x.Payload
-	}
-	return nil
-}
-
-type ReadEntryGRPCResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Payload *ReadEntryGRPCResponse_Payload `protobuf:"bytes,1,opt,name=payload,proto3" json:"payload,omitempty"`
-}
-
-func (x *ReadEntryGRPCResponse) Reset() {
-	*x = ReadEntryGRPCResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_notebook_proto_msgTypes[2]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *ReadEntryGRPCResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ReadEntryGRPCResponse) ProtoMessage() {}
-
-func (x *ReadEntryGRPCResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_notebook_proto_msgTypes[2]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ReadEntryGRPCResponse.ProtoReflect.Descriptor instead.
-func (*ReadEntryGRPCResponse) Descriptor() ([]byte, []int) {
-	return file_notebook_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *ReadEntryGRPCResponse) GetPayload() *ReadEntryGRPCResponse_Payload {
-	if x != nil {
-		return x.Payload
-	}
-	return nil
-}
-
-type StartNewEntryGRPCRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Principal *Principal                        `protobuf:"bytes,1,opt,name=principal,proto3" json:"principal,omitempty"`
-	Payload   *StartNewEntryGRPCRequest_Payload `protobuf:"bytes,2,opt,name=payload,proto3" json:"payload,omitempty"`
-}
-
-func (x *StartNewEntryGRPCRequest) Reset() {
-	*x = StartNewEntryGRPCRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_notebook_proto_msgTypes[3]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *StartNewEntryGRPCRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StartNewEntryGRPCRequest) ProtoMessage() {}
-
-func (x *StartNewEntryGRPCRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_notebook_proto_msgTypes[3]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StartNewEntryGRPCRequest.ProtoReflect.Descriptor instead.
-func (*StartNewEntryGRPCRequest) Descriptor() ([]byte, []int) {
-	return file_notebook_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *StartNewEntryGRPCRequest) GetPrincipal() *Principal {
-	if x != nil {
-		return x.Principal
-	}
-	return nil
-}
-
-func (x *StartNewEntryGRPCRequest) GetPayload() *StartNewEntryGRPCRequest_Payload {
-	if x != nil {
-		return x.Payload
-	}
-	return nil
-}
-
-type StartNewEntryGRPCResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Payload *StartNewEntryGRPCResponse_Payload `protobuf:"bytes,1,opt,name=payload,proto3" json:"payload,omitempty"`
-}
-
-func (x *StartNewEntryGRPCResponse) Reset() {
-	*x = StartNewEntryGRPCResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_notebook_proto_msgTypes[4]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *StartNewEntryGRPCResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StartNewEntryGRPCResponse) ProtoMessage() {}
-
-func (x *StartNewEntryGRPCResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_notebook_proto_msgTypes[4]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StartNewEntryGRPCResponse.ProtoReflect.Descriptor instead.
-func (*StartNewEntryGRPCResponse) Descriptor() ([]byte, []int) {
-	return file_notebook_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *StartNewEntryGRPCResponse) GetPayload() *StartNewEntryGRPCResponse_Payload {
-	if x != nil {
-		return x.Payload
-	}
-	return nil
-}
-
-type ReadEntryGRPCRequest_Payload struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-}
-
-func (x *ReadEntryGRPCRequest_Payload) Reset() {
-	*x = ReadEntryGRPCRequest_Payload{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_notebook_proto_msgTypes[5]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *ReadEntryGRPCRequest_Payload) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ReadEntryGRPCRequest_Payload) ProtoMessage() {}
-
-func (x *ReadEntryGRPCRequest_Payload) ProtoReflect() protoreflect.Message {
-	mi := &file_notebook_proto_msgTypes[5]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ReadEntryGRPCRequest_Payload.ProtoReflect.Descriptor instead.
-func (*ReadEntryGRPCRequest_Payload) Descriptor() ([]byte, []int) {
-	return file_notebook_proto_rawDescGZIP(), []int{1, 0}
-}
-
-func (x *ReadEntryGRPCRequest_Payload) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-type ReadEntryGRPCResponse_Payload struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id        string               `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Text      string               `protobuf:"bytes,2,opt,name=text,proto3" json:"text,omitempty"`
-	CreatorId string               `protobuf:"bytes,3,opt,name=creator_id,json=creatorId,proto3" json:"creator_id,omitempty"`
-	CreatedAt *timestamp.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt *timestamp.Timestamp `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-}
-
-func (x *ReadEntryGRPCResponse_Payload) Reset() {
-	*x = ReadEntryGRPCResponse_Payload{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_notebook_proto_msgTypes[6]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *ReadEntryGRPCResponse_Payload) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ReadEntryGRPCResponse_Payload) ProtoMessage() {}
-
-func (x *ReadEntryGRPCResponse_Payload) ProtoReflect() protoreflect.Message {
-	mi := &file_notebook_proto_msgTypes[6]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ReadEntryGRPCResponse_Payload.ProtoReflect.Descriptor instead.
-func (*ReadEntryGRPCResponse_Payload) Descriptor() ([]byte, []int) {
-	return file_notebook_proto_rawDescGZIP(), []int{2, 0}
-}
-
-func (x *ReadEntryGRPCResponse_Payload) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *ReadEntryGRPCResponse_Payload) GetText() string {
-	if x != nil {
-		return x.Text
-	}
-	return ""
-}
-
-func (x *ReadEntryGRPCResponse_Payload) GetCreatorId() string {
-	if x != nil {
-		return x.CreatorId
-	}
-	return ""
-}
-
-func (x *ReadEntryGRPCResponse_Payload) GetCreatedAt() *timestamp.Timestamp {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return nil
-}
-
-func (x *ReadEntryGRPCResponse_Payload) GetUpdatedAt() *timestamp.Timestamp {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return nil
-}
-
-type StartNewEntryGRPCRequest_Payload struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	CreatorId string `protobuf:"bytes,1,opt,name=creator_id,json=creatorId,proto3" json:"creator_id,omitempty"`
-}
-
-func (x *StartNewEntryGRPCRequest_Payload) Reset() {
-	*x = StartNewEntryGRPCRequest_Payload{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_notebook_proto_msgTypes[7]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *StartNewEntryGRPCRequest_Payload) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StartNewEntryGRPCRequest_Payload) ProtoMessage() {}
-
-func (x *StartNewEntryGRPCRequest_Payload) ProtoReflect() protoreflect.Message {
-	mi := &file_notebook_proto_msgTypes[7]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StartNewEntryGRPCRequest_Payload.ProtoReflect.Descriptor instead.
-func (*StartNewEntryGRPCRequest_Payload) Descriptor() ([]byte, []int) {
-	return file_notebook_proto_rawDescGZIP(), []int{3, 0}
-}
-
-func (x *StartNewEntryGRPCRequest_Payload) GetCreatorId() string {
-	if x != nil {
-		return x.CreatorId
-	}
-	return ""
-}
-
-type StartNewEntryGRPCResponse_Payload struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-}
-
-func (x *StartNewEntryGRPCResponse_Payload) Reset() {
-	*x = StartNewEntryGRPCResponse_Payload{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_notebook_proto_msgTypes[8]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *StartNewEntryGRPCResponse_Payload) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StartNewEntryGRPCResponse_Payload) ProtoMessage() {}
-
-func (x *StartNewEntryGRPCResponse_Payload) ProtoReflect() protoreflect.Message {
-	mi := &file_notebook_proto_msgTypes[8]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StartNewEntryGRPCResponse_Payload.ProtoReflect.Descriptor instead.
-func (*StartNewEntryGRPCResponse_Payload) Descriptor() ([]byte, []int) {
-	return file_notebook_proto_rawDescGZIP(), []int{4, 0}
-}
-
-func (x *StartNewEntryGRPCResponse_Payload) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
 var File_notebook_proto protoreflect.FileDescriptor
 
 var file_notebook_proto_rawDesc = []byte{
@@ -556,80 +308,45 @@ var file_notebook_proto_rawDesc = []byte{
 	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x74,
 	0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1c,
 	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x6e, 0x6e, 0x6f, 0x74,
-	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x5e, 0x0a, 0x09,
-	0x50, 0x72, 0x69, 0x6e, 0x63, 0x69, 0x70, 0x61, 0x6c, 0x12, 0x2f, 0x0a, 0x04, 0x74, 0x79, 0x70,
-	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x1b, 0x2e, 0x6e, 0x6f, 0x74, 0x65, 0x62, 0x6f,
-	0x6f, 0x6b, 0x2e, 0x76, 0x32, 0x2e, 0x50, 0x72, 0x69, 0x6e, 0x63, 0x69, 0x70, 0x61, 0x6c, 0x2e,
-	0x54, 0x79, 0x70, 0x65, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0x10, 0x0a, 0x04, 0x54, 0x79,
-	0x70, 0x65, 0x12, 0x08, 0x0a, 0x04, 0x55, 0x53, 0x45, 0x52, 0x10, 0x00, 0x22, 0xac, 0x01, 0x0a,
-	0x14, 0x52, 0x65, 0x61, 0x64, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x47, 0x52, 0x50, 0x43, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x34, 0x0a, 0x09, 0x70, 0x72, 0x69, 0x6e, 0x63, 0x69, 0x70,
-	0x61, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x6e, 0x6f, 0x74, 0x65, 0x62,
-	0x6f, 0x6f, 0x6b, 0x2e, 0x76, 0x32, 0x2e, 0x50, 0x72, 0x69, 0x6e, 0x63, 0x69, 0x70, 0x61, 0x6c,
-	0x52, 0x09, 0x70, 0x72, 0x69, 0x6e, 0x63, 0x69, 0x70, 0x61, 0x6c, 0x12, 0x43, 0x0a, 0x07, 0x70,
-	0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x29, 0x2e, 0x6e,
-	0x6f, 0x74, 0x65, 0x62, 0x6f, 0x6f, 0x6b, 0x2e, 0x76, 0x32, 0x2e, 0x52, 0x65, 0x61, 0x64, 0x45,
-	0x6e, 0x74, 0x72, 0x79, 0x47, 0x52, 0x50, 0x43, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e,
-	0x50, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x52, 0x07, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64,
-	0x1a, 0x19, 0x0a, 0x07, 0x50, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x12, 0x0e, 0x0a, 0x02, 0x69,
-	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0xa2, 0x02, 0x0a, 0x15,
-	0x52, 0x65, 0x61, 0x64, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x47, 0x52, 0x50, 0x43, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x44, 0x0a, 0x07, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2a, 0x2e, 0x6e, 0x6f, 0x74, 0x65, 0x62, 0x6f, 0x6f,
-	0x6b, 0x2e, 0x76, 0x32, 0x2e, 0x52, 0x65, 0x61, 0x64, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x47, 0x52,
-	0x50, 0x43, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x50, 0x61, 0x79, 0x6c, 0x6f,
-	0x61, 0x64, 0x52, 0x07, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x1a, 0xc2, 0x01, 0x0a, 0x07,
-	0x50, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x65, 0x78, 0x74, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x65, 0x78, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x63,
-	0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x09, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x49, 0x64, 0x12, 0x39, 0x0a, 0x0a, 0x63, 0x72,
-	0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a,
-	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
-	0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x09, 0x63, 0x72, 0x65, 0x61,
-	0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x39, 0x0a, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64,
-	0x5f, 0x61, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
-	0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65,
-	0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x09, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74,
-	0x22, 0xc3, 0x01, 0x0a, 0x18, 0x53, 0x74, 0x61, 0x72, 0x74, 0x4e, 0x65, 0x77, 0x45, 0x6e, 0x74,
-	0x72, 0x79, 0x47, 0x52, 0x50, 0x43, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x34, 0x0a,
-	0x09, 0x70, 0x72, 0x69, 0x6e, 0x63, 0x69, 0x70, 0x61, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
-	0x32, 0x16, 0x2e, 0x6e, 0x6f, 0x74, 0x65, 0x62, 0x6f, 0x6f, 0x6b, 0x2e, 0x76, 0x32, 0x2e, 0x50,
-	0x72, 0x69, 0x6e, 0x63, 0x69, 0x70, 0x61, 0x6c, 0x52, 0x09, 0x70, 0x72, 0x69, 0x6e, 0x63, 0x69,
-	0x70, 0x61, 0x6c, 0x12, 0x47, 0x0a, 0x07, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x0b, 0x32, 0x2d, 0x2e, 0x6e, 0x6f, 0x74, 0x65, 0x62, 0x6f, 0x6f, 0x6b, 0x2e,
-	0x76, 0x32, 0x2e, 0x53, 0x74, 0x61, 0x72, 0x74, 0x4e, 0x65, 0x77, 0x45, 0x6e, 0x74, 0x72, 0x79,
-	0x47, 0x52, 0x50, 0x43, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x50, 0x61, 0x79, 0x6c,
-	0x6f, 0x61, 0x64, 0x52, 0x07, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x1a, 0x28, 0x0a, 0x07,
-	0x50, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x63, 0x72, 0x65, 0x61, 0x74,
-	0x6f, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x63, 0x72, 0x65,
-	0x61, 0x74, 0x6f, 0x72, 0x49, 0x64, 0x22, 0x80, 0x01, 0x0a, 0x19, 0x53, 0x74, 0x61, 0x72, 0x74,
-	0x4e, 0x65, 0x77, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x47, 0x52, 0x50, 0x43, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x48, 0x0a, 0x07, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2e, 0x2e, 0x6e, 0x6f, 0x74, 0x65, 0x62, 0x6f, 0x6f, 0x6b,
-	0x2e, 0x76, 0x32, 0x2e, 0x53, 0x74, 0x61, 0x72, 0x74, 0x4e, 0x65, 0x77, 0x45, 0x6e, 0x74, 0x72,
-	0x79, 0x47, 0x52, 0x50, 0x43, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x50, 0x61,
-	0x79, 0x6c, 0x6f, 0x61, 0x64, 0x52, 0x07, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x1a, 0x19,
-	0x0a, 0x07, 0x50, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x32, 0xf8, 0x01, 0x0a, 0x08, 0x4e, 0x6f,
-	0x74, 0x65, 0x62, 0x6f, 0x6f, 0x6b, 0x12, 0x74, 0x0a, 0x09, 0x52, 0x65, 0x61, 0x64, 0x45, 0x6e,
-	0x74, 0x72, 0x79, 0x12, 0x21, 0x2e, 0x6e, 0x6f, 0x74, 0x65, 0x62, 0x6f, 0x6f, 0x6b, 0x2e, 0x76,
-	0x32, 0x2e, 0x52, 0x65, 0x61, 0x64, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x47, 0x52, 0x50, 0x43, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x22, 0x2e, 0x6e, 0x6f, 0x74, 0x65, 0x62, 0x6f, 0x6f,
-	0x6b, 0x2e, 0x76, 0x32, 0x2e, 0x52, 0x65, 0x61, 0x64, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x47, 0x52,
-	0x50, 0x43, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x20, 0x82, 0xd3, 0xe4, 0x93,
-	0x02, 0x1a, 0x12, 0x18, 0x2f, 0x76, 0x32, 0x2f, 0x65, 0x6e, 0x74, 0x72, 0x69, 0x65, 0x73, 0x2f,
-	0x7b, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x2e, 0x69, 0x64, 0x7d, 0x12, 0x76, 0x0a, 0x0d,
-	0x53, 0x74, 0x61, 0x72, 0x74, 0x4e, 0x65, 0x77, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x25, 0x2e,
-	0x6e, 0x6f, 0x74, 0x65, 0x62, 0x6f, 0x6f, 0x6b, 0x2e, 0x76, 0x32, 0x2e, 0x53, 0x74, 0x61, 0x72,
-	0x74, 0x4e, 0x65, 0x77, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x47, 0x52, 0x50, 0x43, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x1a, 0x26, 0x2e, 0x6e, 0x6f, 0x74, 0x65, 0x62, 0x6f, 0x6f, 0x6b, 0x2e,
-	0x76, 0x32, 0x2e, 0x53, 0x74, 0x61, 0x72, 0x74, 0x4e, 0x65, 0x77, 0x45, 0x6e, 0x74, 0x72, 0x79,
-	0x47, 0x52, 0x50, 0x43, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x16, 0x82, 0xd3,
-	0xe4, 0x93, 0x02, 0x10, 0x22, 0x0b, 0x2f, 0x76, 0x32, 0x2f, 0x65, 0x6e, 0x74, 0x72, 0x69, 0x65,
-	0x73, 0x3a, 0x01, 0x2a, 0x42, 0x0d, 0x5a, 0x0b, 0x6e, 0x6f, 0x74, 0x65, 0x62, 0x6f, 0x6f, 0x6b,
-	0x2f, 0x76, 0x32, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x21, 0x0a, 0x0f,
+	0x47, 0x65, 0x74, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
+	0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22,
+	0xc0, 0x01, 0x0a, 0x05, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x65, 0x78,
+	0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x65, 0x78, 0x74, 0x12, 0x1d, 0x0a,
+	0x0a, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x09, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x49, 0x64, 0x12, 0x39, 0x0a, 0x0a,
+	0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
+	0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x09, 0x63, 0x72,
+	0x65, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x39, 0x0a, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69,
+	0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x09, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64,
+	0x41, 0x74, 0x22, 0x3e, 0x0a, 0x12, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x45, 0x6e, 0x74, 0x72,
+	0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x28, 0x0a, 0x05, 0x65, 0x6e, 0x74, 0x72,
+	0x79, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x6e, 0x6f, 0x74, 0x65, 0x62, 0x6f,
+	0x6f, 0x6b, 0x2e, 0x76, 0x32, 0x2e, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x05, 0x65, 0x6e, 0x74,
+	0x72, 0x79, 0x22, 0x5e, 0x0a, 0x09, 0x50, 0x72, 0x69, 0x6e, 0x63, 0x69, 0x70, 0x61, 0x6c, 0x12,
+	0x2f, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x1b, 0x2e,
+	0x6e, 0x6f, 0x74, 0x65, 0x62, 0x6f, 0x6f, 0x6b, 0x2e, 0x76, 0x32, 0x2e, 0x50, 0x72, 0x69, 0x6e,
+	0x63, 0x69, 0x70, 0x61, 0x6c, 0x2e, 0x54, 0x79, 0x70, 0x65, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65,
+	0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64,
+	0x22, 0x10, 0x0a, 0x04, 0x54, 0x79, 0x70, 0x65, 0x12, 0x08, 0x0a, 0x04, 0x55, 0x53, 0x45, 0x52,
+	0x10, 0x00, 0x32, 0xc2, 0x01, 0x0a, 0x08, 0x4e, 0x6f, 0x74, 0x65, 0x62, 0x6f, 0x6f, 0x6b, 0x12,
+	0x56, 0x0a, 0x08, 0x47, 0x65, 0x74, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x1c, 0x2e, 0x6e, 0x6f,
+	0x74, 0x65, 0x62, 0x6f, 0x6f, 0x6b, 0x2e, 0x76, 0x32, 0x2e, 0x47, 0x65, 0x74, 0x45, 0x6e, 0x74,
+	0x72, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x12, 0x2e, 0x6e, 0x6f, 0x74, 0x65,
+	0x62, 0x6f, 0x6f, 0x6b, 0x2e, 0x76, 0x32, 0x2e, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x22, 0x18, 0x82,
+	0xd3, 0xe4, 0x93, 0x02, 0x12, 0x12, 0x10, 0x2f, 0x76, 0x32, 0x2f, 0x65, 0x6e, 0x74, 0x72, 0x69,
+	0x65, 0x73, 0x2f, 0x7b, 0x69, 0x64, 0x7d, 0x12, 0x5e, 0x0a, 0x0b, 0x43, 0x72, 0x65, 0x61, 0x74,
+	0x65, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x1f, 0x2e, 0x6e, 0x6f, 0x74, 0x65, 0x62, 0x6f, 0x6f,
+	0x6b, 0x2e, 0x76, 0x32, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x45, 0x6e, 0x74, 0x72, 0x79,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x12, 0x2e, 0x6e, 0x6f, 0x74, 0x65, 0x62, 0x6f,
+	0x6f, 0x6b, 0x2e, 0x76, 0x32, 0x2e, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x22, 0x1a, 0x82, 0xd3, 0xe4,
+	0x93, 0x02, 0x14, 0x22, 0x0b, 0x2f, 0x76, 0x32, 0x2f, 0x65, 0x6e, 0x74, 0x72, 0x69, 0x65, 0x73,
+	0x3a, 0x05, 0x65, 0x6e, 0x74, 0x72, 0x79, 0x42, 0x0d, 0x5a, 0x0b, 0x6e, 0x6f, 0x74, 0x65, 0x62,
+	0x6f, 0x6f, 0x6b, 0x2f, 0x76, 0x32, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -645,39 +362,29 @@ func file_notebook_proto_rawDescGZIP() []byte {
 }
 
 var file_notebook_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_notebook_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_notebook_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_notebook_proto_goTypes = []interface{}{
-	(Principal_Type)(0),                       // 0: notebook.v2.Principal.Type
-	(*Principal)(nil),                         // 1: notebook.v2.Principal
-	(*ReadEntryGRPCRequest)(nil),              // 2: notebook.v2.ReadEntryGRPCRequest
-	(*ReadEntryGRPCResponse)(nil),             // 3: notebook.v2.ReadEntryGRPCResponse
-	(*StartNewEntryGRPCRequest)(nil),          // 4: notebook.v2.StartNewEntryGRPCRequest
-	(*StartNewEntryGRPCResponse)(nil),         // 5: notebook.v2.StartNewEntryGRPCResponse
-	(*ReadEntryGRPCRequest_Payload)(nil),      // 6: notebook.v2.ReadEntryGRPCRequest.Payload
-	(*ReadEntryGRPCResponse_Payload)(nil),     // 7: notebook.v2.ReadEntryGRPCResponse.Payload
-	(*StartNewEntryGRPCRequest_Payload)(nil),  // 8: notebook.v2.StartNewEntryGRPCRequest.Payload
-	(*StartNewEntryGRPCResponse_Payload)(nil), // 9: notebook.v2.StartNewEntryGRPCResponse.Payload
-	(*timestamp.Timestamp)(nil),               // 10: google.protobuf.Timestamp
+	(Principal_Type)(0),         // 0: notebook.v2.Principal.Type
+	(*GetEntryRequest)(nil),     // 1: notebook.v2.GetEntryRequest
+	(*Entry)(nil),               // 2: notebook.v2.Entry
+	(*CreateEntryRequest)(nil),  // 3: notebook.v2.CreateEntryRequest
+	(*Principal)(nil),           // 4: notebook.v2.Principal
+	(*timestamp.Timestamp)(nil), // 5: google.protobuf.Timestamp
 }
 var file_notebook_proto_depIdxs = []int32{
-	0,  // 0: notebook.v2.Principal.type:type_name -> notebook.v2.Principal.Type
-	1,  // 1: notebook.v2.ReadEntryGRPCRequest.principal:type_name -> notebook.v2.Principal
-	6,  // 2: notebook.v2.ReadEntryGRPCRequest.payload:type_name -> notebook.v2.ReadEntryGRPCRequest.Payload
-	7,  // 3: notebook.v2.ReadEntryGRPCResponse.payload:type_name -> notebook.v2.ReadEntryGRPCResponse.Payload
-	1,  // 4: notebook.v2.StartNewEntryGRPCRequest.principal:type_name -> notebook.v2.Principal
-	8,  // 5: notebook.v2.StartNewEntryGRPCRequest.payload:type_name -> notebook.v2.StartNewEntryGRPCRequest.Payload
-	9,  // 6: notebook.v2.StartNewEntryGRPCResponse.payload:type_name -> notebook.v2.StartNewEntryGRPCResponse.Payload
-	10, // 7: notebook.v2.ReadEntryGRPCResponse.Payload.created_at:type_name -> google.protobuf.Timestamp
-	10, // 8: notebook.v2.ReadEntryGRPCResponse.Payload.updated_at:type_name -> google.protobuf.Timestamp
-	2,  // 9: notebook.v2.Notebook.ReadEntry:input_type -> notebook.v2.ReadEntryGRPCRequest
-	4,  // 10: notebook.v2.Notebook.StartNewEntry:input_type -> notebook.v2.StartNewEntryGRPCRequest
-	3,  // 11: notebook.v2.Notebook.ReadEntry:output_type -> notebook.v2.ReadEntryGRPCResponse
-	5,  // 12: notebook.v2.Notebook.StartNewEntry:output_type -> notebook.v2.StartNewEntryGRPCResponse
-	11, // [11:13] is the sub-list for method output_type
-	9,  // [9:11] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	5, // 0: notebook.v2.Entry.created_at:type_name -> google.protobuf.Timestamp
+	5, // 1: notebook.v2.Entry.updated_at:type_name -> google.protobuf.Timestamp
+	2, // 2: notebook.v2.CreateEntryRequest.entry:type_name -> notebook.v2.Entry
+	0, // 3: notebook.v2.Principal.type:type_name -> notebook.v2.Principal.Type
+	1, // 4: notebook.v2.Notebook.GetEntry:input_type -> notebook.v2.GetEntryRequest
+	3, // 5: notebook.v2.Notebook.CreateEntry:input_type -> notebook.v2.CreateEntryRequest
+	2, // 6: notebook.v2.Notebook.GetEntry:output_type -> notebook.v2.Entry
+	2, // 7: notebook.v2.Notebook.CreateEntry:output_type -> notebook.v2.Entry
+	6, // [6:8] is the sub-list for method output_type
+	4, // [4:6] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_notebook_proto_init() }
@@ -687,7 +394,7 @@ func file_notebook_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_notebook_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Principal); i {
+			switch v := v.(*GetEntryRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -699,7 +406,7 @@ func file_notebook_proto_init() {
 			}
 		}
 		file_notebook_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ReadEntryGRPCRequest); i {
+			switch v := v.(*Entry); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -711,7 +418,7 @@ func file_notebook_proto_init() {
 			}
 		}
 		file_notebook_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ReadEntryGRPCResponse); i {
+			switch v := v.(*CreateEntryRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -723,67 +430,7 @@ func file_notebook_proto_init() {
 			}
 		}
 		file_notebook_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StartNewEntryGRPCRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_notebook_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StartNewEntryGRPCResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_notebook_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ReadEntryGRPCRequest_Payload); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_notebook_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ReadEntryGRPCResponse_Payload); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_notebook_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StartNewEntryGRPCRequest_Payload); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_notebook_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StartNewEntryGRPCResponse_Payload); i {
+			switch v := v.(*Principal); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -801,7 +448,7 @@ func file_notebook_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_notebook_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   9,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -828,8 +475,8 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type NotebookClient interface {
-	ReadEntry(ctx context.Context, in *ReadEntryGRPCRequest, opts ...grpc.CallOption) (*ReadEntryGRPCResponse, error)
-	StartNewEntry(ctx context.Context, in *StartNewEntryGRPCRequest, opts ...grpc.CallOption) (*StartNewEntryGRPCResponse, error)
+	GetEntry(ctx context.Context, in *GetEntryRequest, opts ...grpc.CallOption) (*Entry, error)
+	CreateEntry(ctx context.Context, in *CreateEntryRequest, opts ...grpc.CallOption) (*Entry, error)
 }
 
 type notebookClient struct {
@@ -840,18 +487,18 @@ func NewNotebookClient(cc grpc.ClientConnInterface) NotebookClient {
 	return &notebookClient{cc}
 }
 
-func (c *notebookClient) ReadEntry(ctx context.Context, in *ReadEntryGRPCRequest, opts ...grpc.CallOption) (*ReadEntryGRPCResponse, error) {
-	out := new(ReadEntryGRPCResponse)
-	err := c.cc.Invoke(ctx, "/notebook.v2.Notebook/ReadEntry", in, out, opts...)
+func (c *notebookClient) GetEntry(ctx context.Context, in *GetEntryRequest, opts ...grpc.CallOption) (*Entry, error) {
+	out := new(Entry)
+	err := c.cc.Invoke(ctx, "/notebook.v2.Notebook/GetEntry", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *notebookClient) StartNewEntry(ctx context.Context, in *StartNewEntryGRPCRequest, opts ...grpc.CallOption) (*StartNewEntryGRPCResponse, error) {
-	out := new(StartNewEntryGRPCResponse)
-	err := c.cc.Invoke(ctx, "/notebook.v2.Notebook/StartNewEntry", in, out, opts...)
+func (c *notebookClient) CreateEntry(ctx context.Context, in *CreateEntryRequest, opts ...grpc.CallOption) (*Entry, error) {
+	out := new(Entry)
+	err := c.cc.Invoke(ctx, "/notebook.v2.Notebook/CreateEntry", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -860,57 +507,57 @@ func (c *notebookClient) StartNewEntry(ctx context.Context, in *StartNewEntryGRP
 
 // NotebookServer is the server API for Notebook service.
 type NotebookServer interface {
-	ReadEntry(context.Context, *ReadEntryGRPCRequest) (*ReadEntryGRPCResponse, error)
-	StartNewEntry(context.Context, *StartNewEntryGRPCRequest) (*StartNewEntryGRPCResponse, error)
+	GetEntry(context.Context, *GetEntryRequest) (*Entry, error)
+	CreateEntry(context.Context, *CreateEntryRequest) (*Entry, error)
 }
 
 // UnimplementedNotebookServer can be embedded to have forward compatible implementations.
 type UnimplementedNotebookServer struct {
 }
 
-func (*UnimplementedNotebookServer) ReadEntry(context.Context, *ReadEntryGRPCRequest) (*ReadEntryGRPCResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReadEntry not implemented")
+func (*UnimplementedNotebookServer) GetEntry(context.Context, *GetEntryRequest) (*Entry, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetEntry not implemented")
 }
-func (*UnimplementedNotebookServer) StartNewEntry(context.Context, *StartNewEntryGRPCRequest) (*StartNewEntryGRPCResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method StartNewEntry not implemented")
+func (*UnimplementedNotebookServer) CreateEntry(context.Context, *CreateEntryRequest) (*Entry, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateEntry not implemented")
 }
 
 func RegisterNotebookServer(s *grpc.Server, srv NotebookServer) {
 	s.RegisterService(&_Notebook_serviceDesc, srv)
 }
 
-func _Notebook_ReadEntry_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReadEntryGRPCRequest)
+func _Notebook_GetEntry_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetEntryRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NotebookServer).ReadEntry(ctx, in)
+		return srv.(NotebookServer).GetEntry(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/notebook.v2.Notebook/ReadEntry",
+		FullMethod: "/notebook.v2.Notebook/GetEntry",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NotebookServer).ReadEntry(ctx, req.(*ReadEntryGRPCRequest))
+		return srv.(NotebookServer).GetEntry(ctx, req.(*GetEntryRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Notebook_StartNewEntry_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StartNewEntryGRPCRequest)
+func _Notebook_CreateEntry_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateEntryRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NotebookServer).StartNewEntry(ctx, in)
+		return srv.(NotebookServer).CreateEntry(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/notebook.v2.Notebook/StartNewEntry",
+		FullMethod: "/notebook.v2.Notebook/CreateEntry",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NotebookServer).StartNewEntry(ctx, req.(*StartNewEntryGRPCRequest))
+		return srv.(NotebookServer).CreateEntry(ctx, req.(*CreateEntryRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -920,12 +567,12 @@ var _Notebook_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*NotebookServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ReadEntry",
-			Handler:    _Notebook_ReadEntry_Handler,
+			MethodName: "GetEntry",
+			Handler:    _Notebook_GetEntry_Handler,
 		},
 		{
-			MethodName: "StartNewEntry",
-			Handler:    _Notebook_StartNewEntry_Handler,
+			MethodName: "CreateEntry",
+			Handler:    _Notebook_CreateEntry_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

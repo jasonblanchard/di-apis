@@ -9,5 +9,8 @@ build_rest_proxy:
 
 build: build_go
 
+swaggerui:
+	docker run -e SWAGGER_JSON=/di-apis/gen/pb-go/notebook.swagger.json -v ${shell pwd}:/di-apis -p 9090:8080 swaggerapi/swagger-ui
+
 clean:
 	rm -rf gen
