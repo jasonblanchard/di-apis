@@ -4,6 +4,7 @@ option go_package = "notebook/v2";
 
 import "google/protobuf/timestamp.proto";
 import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
 
 service Notebook {
   rpc GetEntry(GetEntryRequest) returns (Entry) {
@@ -17,6 +18,31 @@ service Notebook {
       body: "entry"
     };
   }
+  rpc UpdateEntry(UpdateEntryRequest) returns (Entry) {
+    option (google.api.http) = {
+      patch: "/v2/entries/{id}"
+      body: "entry"
+    };    
+  }
+  rpc ListEntries(ListEntryRequest) returns (ListEntriesResponse) {
+    option (google.api.http) = {
+      get: "/v2/entries"
+    };
+  }
+  rpc DeleteEntry(DeleteEntryRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete: "/v2/entries/{id}"
+    };
+  }
+}
+
+message Principal {
+  enum Type {
+    USER = 0;
+  }
+
+  Type type = 1;
+  string id = 2;
 }
 
 message GetEntryRequest {
@@ -27,6 +53,7 @@ message Entry {
   // Output only.
   string id = 1;
   string text = 2;
+  // Output only.
   string creator_id = 3;
   // Output only.
   google.protobuf.Timestamp created_at = 4;
@@ -35,14 +62,26 @@ message Entry {
 }
 
 message CreateEntryRequest {
+  Entry entry = 1;
+}
+
+message UpdateEntryRequest {
+  string id = 1;
   Entry entry = 2;
 }
 
-message Principal {
-  enum Type {
-    USER = 0;
-  }
+message ListEntryRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
 
-  Type type = 1;
-  string id = 2;
+message ListEntriesResponse {
+  repeated Entry entries = 1;
+  string next_page_token = 2;
+  int32 total_size = 3;
+  bool has_next_page = 4;
+}
+
+message DeleteEntryRequest {
+  string id = 1;
 }

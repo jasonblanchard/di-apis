@@ -14,3 +14,6 @@ swaggerui:
 
 clean:
 	rm -rf gen
+
+restclient:
+	docker run --rm -it -v ${shell pwd}:/local openapitools/openapi-generator-cli /bin/bash
