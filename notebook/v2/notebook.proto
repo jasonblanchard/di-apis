@@ -5,11 +5,34 @@ option go_package = "notebook/v2";
 import "google/protobuf/timestamp.proto";
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
+// import "protoc-gen-swagger/options/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  security_definitions: {
+    security: {
+      key: "Bearer";
+      value: {
+        type: TYPE_API_KEY;
+        name: "Authorization";
+        in: IN_HEADER;
+      }
+    }
+  }
+};
 
 service Notebook {
   rpc GetEntry(GetEntryRequest) returns (Entry) {
     option (google.api.http) = {
       get: "/notebook/v2/entries/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      security: {
+        security_requirement: {
+          key: "Bearer";
+          value: {}
+        }
+      }
     };
   }
   rpc CreateEntry(CreateEntryRequest) returns (Entry) {
@@ -17,21 +40,53 @@ service Notebook {
       post: "/notebook/v2/entries"
       body: "entry"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      security: {
+        security_requirement: {
+          key: "Bearer";
+          value: {}
+        }
+      }
+    };
   }
   rpc UpdateEntry(UpdateEntryRequest) returns (Entry) {
     option (google.api.http) = {
       patch: "/notebook/v2/entries/{id}"
       body: "entry"
-    };    
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      security: {
+        security_requirement: {
+          key: "Bearer";
+          value: {}
+        }
+      }
+    };
   }
   rpc ListEntries(ListEntryRequest) returns (ListEntriesResponse) {
     option (google.api.http) = {
       get: "/notebook/v2/entries"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      security: {
+        security_requirement: {
+          key: "Bearer";
+          value: {}
+        }
+      }
+    };
   }
   rpc DeleteEntry(DeleteEntryRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {
       delete: "/notebook/v2/entries/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      security: {
+        security_requirement: {
+          key: "Bearer";
+          value: {}
+        }
+      }
     };
   }
 }
