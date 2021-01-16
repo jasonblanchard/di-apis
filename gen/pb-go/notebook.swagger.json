@@ -16,7 +16,7 @@
     "application/json"
   ],
   "paths": {
-    "/v2/entries": {
+    "/notebook/v2/entries": {
       "get": {
         "operationId": "Notebook_ListEntries",
         "responses": {
@@ -83,7 +83,7 @@
         ]
       }
     },
-    "/v2/entries/{id}": {
+    "/notebook/v2/entries/{id}": {
       "get": {
         "operationId": "Notebook_GetEntry",
         "responses": {

@@ -9,29 +9,29 @@ import "google/protobuf/empty.proto";
 service Notebook {
   rpc GetEntry(GetEntryRequest) returns (Entry) {
     option (google.api.http) = {
-      get: "/v2/entries/{id}"
+      get: "/notebook/v2/entries/{id}"
     };
   }
   rpc CreateEntry(CreateEntryRequest) returns (Entry) {
     option (google.api.http) = {
-      post: "/v2/entries"
+      post: "/notebook/v2/entries"
       body: "entry"
     };
   }
   rpc UpdateEntry(UpdateEntryRequest) returns (Entry) {
     option (google.api.http) = {
-      patch: "/v2/entries/{id}"
+      patch: "/notebook/v2/entries/{id}"
       body: "entry"
     };    
   }
   rpc ListEntries(ListEntryRequest) returns (ListEntriesResponse) {
     option (google.api.http) = {
-      get: "/v2/entries"
+      get: "/notebook/v2/entries"
     };
   }
   rpc DeleteEntry(DeleteEntryRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {
-      delete: "/v2/entries/{id}"
+      delete: "/notebook/v2/entries/{id}"
     };
   }
 }

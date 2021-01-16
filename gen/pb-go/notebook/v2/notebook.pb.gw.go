@@ -539,15 +539,15 @@ func RegisterNotebookHandlerClient(ctx context.Context, mux *runtime.ServeMux, c
 }
 
 var (
-	pattern_Notebook_GetEntry_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v2", "entries", "id"}, ""))
+	pattern_Notebook_GetEntry_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"notebook", "v2", "entries", "id"}, ""))
 
-	pattern_Notebook_CreateEntry_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v2", "entries"}, ""))
+	pattern_Notebook_CreateEntry_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"notebook", "v2", "entries"}, ""))
 
-	pattern_Notebook_UpdateEntry_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v2", "entries", "id"}, ""))
+	pattern_Notebook_UpdateEntry_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"notebook", "v2", "entries", "id"}, ""))
 
-	pattern_Notebook_ListEntries_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v2", "entries"}, ""))
+	pattern_Notebook_ListEntries_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"notebook", "v2", "entries"}, ""))
 
-	pattern_Notebook_DeleteEntry_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v2", "entries", "id"}, ""))
+	pattern_Notebook_DeleteEntry_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"notebook", "v2", "entries", "id"}, ""))
 )
 
 var (
