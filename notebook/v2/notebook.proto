@@ -5,10 +5,10 @@ option go_package = "notebook/v2";
 import "google/protobuf/timestamp.proto";
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
-// import "protoc-gen-swagger/options/annotations.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  base_path: "/notebook"
   security_definitions: {
     security: {
       key: "Bearer";
@@ -24,7 +24,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 service Notebook {
   rpc GetEntry(GetEntryRequest) returns (Entry) {
     option (google.api.http) = {
-      get: "/notebook/v2/entries/{id}"
+      get: "/v2/entries/{id}"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       security: {
@@ -37,7 +37,7 @@ service Notebook {
   }
   rpc CreateEntry(CreateEntryRequest) returns (Entry) {
     option (google.api.http) = {
-      post: "/notebook/v2/entries"
+      post: "/v2/entries"
       body: "entry"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
@@ -51,7 +51,7 @@ service Notebook {
   }
   rpc UpdateEntry(UpdateEntryRequest) returns (Entry) {
     option (google.api.http) = {
-      patch: "/notebook/v2/entries/{id}"
+      patch: "/v2/entries/{id}"
       body: "entry"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
@@ -65,7 +65,7 @@ service Notebook {
   }
   rpc ListEntries(ListEntryRequest) returns (ListEntriesResponse) {
     option (google.api.http) = {
-      get: "/notebook/v2/entries"
+      get: "/v2/entries"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       security: {
@@ -78,7 +78,7 @@ service Notebook {
   }
   rpc DeleteEntry(DeleteEntryRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {
-      delete: "/notebook/v2/entries/{id}"
+      delete: "/v2/entries/{id}"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       security: {
