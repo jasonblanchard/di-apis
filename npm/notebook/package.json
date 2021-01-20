@@ -1,5 +1,5 @@
 {
-  "name": "@jasonblanchard/di-apis-http-client",
+  "name": "@jasonblanchard/di-apis",
   "version": "1.0.0",
   "description": "",
   "main": "client.js",
