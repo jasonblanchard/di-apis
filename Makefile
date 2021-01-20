@@ -1,3 +1,5 @@
+.PHONY: npm
+
 SRC=proto/notebook/v2/notebook.proto
 GO_OUT=./packages/go
 
@@ -17,3 +19,8 @@ clean:
 
 restclient:
 	docker run --rm -it -v ${shell pwd}:/local openapitools/openapi-generator-cli /bin/bash
+
+npm:
+	# TODO: Make a docker image for this
+	node tsgen.js > npm/notebook/client.ts
+
