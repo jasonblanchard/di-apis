@@ -6,6 +6,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     # Setup .npmrc file to publish to GitHub Packages
+    - run: cd npm/notebook
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'

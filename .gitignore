@@ -165,6 +165,6 @@ Temporary Items
 
 # End of https://www.toptal.com/developers/gitignore/api/osx,go,node
 
-*.js
+npm/*.js
 node_modules
 package-lock.json
