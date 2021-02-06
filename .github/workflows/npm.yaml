@@ -1,5 +1,8 @@
-name: post merge
-on: push
+name: npm
+on:
+  push:
+    paths:
+      - 'npm/package.json'
 jobs:
   build:
     runs-on: ubuntu-latest
