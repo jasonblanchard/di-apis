@@ -4,7 +4,6 @@ option go_package = "notebook/v2";
 
 import "google/protobuf/timestamp.proto";
 import "google/api/annotations.proto";
-import "google/protobuf/empty.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
@@ -76,7 +75,7 @@ service Notebook {
       }
     };
   }
-  rpc DeleteEntry(DeleteEntryRequest) returns (google.protobuf.Empty) {
+  rpc DeleteEntry(DeleteEntryRequest) returns (DeleteEntryResponse) {
     option (google.api.http) = {
       delete: "/v2/entries/{id}"
     };
@@ -114,6 +113,8 @@ message Entry {
   google.protobuf.Timestamp created_at = 4;
   // Output only.
   google.protobuf.Timestamp updated_at = 5;
+  // Output only.
+  google.protobuf.Timestamp delete_time = 6;
 }
 
 message CreateEntryRequest {
@@ -139,4 +140,16 @@ message ListEntriesResponse {
 
 message DeleteEntryRequest {
   string id = 1;
+}
+
+message DeleteEntryResponse {
+  Entry entry = 1;
+}
+
+// Data Mesh
+
+// data.mesh.notebook.v2.EntryRevision
+message EntryRevision {
+  Entry entry = 1;
+  Principal actor = 2;
 }

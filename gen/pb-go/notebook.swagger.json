@@ -134,7 +134,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "properties": {}
+              "$ref": "#/definitions/v2DeleteEntryResponse"
             }
           },
           "default": {
@@ -235,6 +235,14 @@
         }
       }
     },
+    "v2DeleteEntryResponse": {
+      "type": "object",
+      "properties": {
+        "entry": {
+          "$ref": "#/definitions/v2Entry"
+        }
+      }
+    },
     "v2Entry": {
       "type": "object",
       "properties": {
@@ -258,6 +266,12 @@
           "readOnly": true
         },
         "updated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Output only.",
+          "readOnly": true
+        },
+        "delete_time": {
           "type": "string",
           "format": "date-time",
           "description": "Output only.",
