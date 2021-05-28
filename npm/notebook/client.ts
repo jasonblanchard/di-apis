@@ -34,12 +34,19 @@ export type rpcStatus = {
     [key: string]: any;
 };
 
+export type v2DeleteEntryResponse = {
+    'entry' ? : v2Entry;
+} & {
+    [key: string]: any;
+};
+
 export type v2Entry = {
     'id' ? : string;
     'text' ? : string;
     'creator_id' ? : string;
     'created_at' ? : string;
     'updated_at' ? : string;
+    'delete_time' ? : string;
 } & {
     [key: string]: any;
 };
@@ -51,10 +58,6 @@ export type v2ListEntriesResponse = {
     'total_size' ? : number;
     'has_next_page' ? : boolean;
 } & {
-    [key: string]: any;
-};
-
-export type Response_Notebook_DeleteEntry_200 = {} & {
     [key: string]: any;
 };
 
@@ -467,7 +470,7 @@ export class NotebookClient {
      */
     Notebook_DeleteEntry(parameters: {
         'id': string,
-    } & CommonRequestOptions): Promise < ResponseWithBody < 200, Response_Notebook_DeleteEntry_200 > | ResponseWithBody < number, rpcStatus >> {
+    } & CommonRequestOptions): Promise < ResponseWithBody < 200, v2DeleteEntryResponse > | ResponseWithBody < number, rpcStatus >> {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
         let path = '/v2/entries/{id}';
         if (parameters.$path) {
@@ -591,6 +594,87 @@ export class NotebookClient {
             }
 
             this.request('PATCH', domain + path, body, headers, queryParameters, form, reject, resolve, parameters);
+        });
+    }
+
+    Notebook_UndeleteEntryURL(parameters: {
+        'id': string,
+    } & CommonRequestOptions): string {
+        let queryParameters: QueryParameters = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/v2/entries/{id}:undelete';
+        if (parameters.$path) {
+            path = (typeof(parameters.$path) === 'function') ? parameters.$path(path) : parameters.$path;
+        }
+
+        path = path.replace(
+            '{id}',
+            `${encodeURIComponent(this.convertParameterCollectionFormat(
+                        parameters['id'],
+                        ''
+                    ).toString())}`
+        );
+
+        if (parameters.$queryParameters) {
+            queryParameters = {
+                ...queryParameters,
+                ...parameters.$queryParameters
+            };
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * 
+     * @method
+     * @name NotebookClient#Notebook_UndeleteEntry
+     * @param {string} id - 
+     */
+    Notebook_UndeleteEntry(parameters: {
+        'id': string,
+    } & CommonRequestOptions): Promise < ResponseWithBody < 200, v2Entry > | ResponseWithBody < number, rpcStatus >> {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/v2/entries/{id}:undelete';
+        if (parameters.$path) {
+            path = (typeof(parameters.$path) === 'function') ? parameters.$path(path) : parameters.$path;
+        }
+
+        let body: any;
+        let queryParameters: QueryParameters = {};
+        let headers: RequestHeaders = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['accept'] = 'application/json';
+            headers['content-type'] = 'application/json';
+
+            path = path.replace(
+                '{id}',
+                `${encodeURIComponent(this.convertParameterCollectionFormat(
+                    parameters['id'],
+                    ''
+                ).toString())}`
+            );
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                queryParameters = {
+                    ...queryParameters,
+                    ...parameters.$queryParameters
+                };
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve, parameters);
         });
     }
 
