@@ -2,7 +2,7 @@ name: npm
 on:
   push:
     paths:
-      - 'npm/package.json'
+      - 'npm/notebook/package.json'
 jobs:
   build:
     runs-on: ubuntu-latest
