@@ -372,6 +372,54 @@ var NotebookClient = /** @class */ (function () {
             _this.request('PATCH', domain + path, body, headers, queryParameters, form, reject, resolve, parameters);
         });
     };
+    NotebookClient.prototype.Notebook_UndeleteEntryURL = function (parameters) {
+        var queryParameters = {};
+        var domain = parameters.$domain ? parameters.$domain : this.domain;
+        var path = '/v2/entries/{id}:undelete';
+        if (parameters.$path) {
+            path = (typeof (parameters.$path) === 'function') ? parameters.$path(path) : parameters.$path;
+        }
+        path = path.replace('{id}', "" + encodeURIComponent(this.convertParameterCollectionFormat(parameters['id'], '').toString()));
+        if (parameters.$queryParameters) {
+            queryParameters = __assign(__assign({}, queryParameters), parameters.$queryParameters);
+        }
+        queryParameters = {};
+        var keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(function (key) { return key + '=' + encodeURIComponent(queryParameters[key]); }).join('&')) : '');
+    };
+    /**
+     *
+     * @method
+     * @name NotebookClient#Notebook_UndeleteEntry
+     * @param {string} id -
+     */
+    NotebookClient.prototype.Notebook_UndeleteEntry = function (parameters) {
+        var _this = this;
+        var domain = parameters.$domain ? parameters.$domain : this.domain;
+        var path = '/v2/entries/{id}:undelete';
+        if (parameters.$path) {
+            path = (typeof (parameters.$path) === 'function') ? parameters.$path(path) : parameters.$path;
+        }
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+        return new Promise(function (resolve, reject) {
+            headers['accept'] = 'application/json';
+            headers['content-type'] = 'application/json';
+            path = path.replace('{id}', "" + encodeURIComponent(_this.convertParameterCollectionFormat(parameters['id'], '').toString()));
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+            if (parameters.$queryParameters) {
+                queryParameters = __assign(__assign({}, queryParameters), parameters.$queryParameters);
+            }
+            form = queryParameters;
+            queryParameters = {};
+            _this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve, parameters);
+        });
+    };
     return NotebookClient;
 }());
 exports.NotebookClient = NotebookClient;
