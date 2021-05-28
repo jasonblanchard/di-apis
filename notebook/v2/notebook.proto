@@ -88,6 +88,19 @@ service Notebook {
       }
     };
   }
+  rpc UndeleteEntry(UndeleteEntryRequest) returns(Entry) {
+    option (google.api.http) = {
+      post: "/v2/entries/{id}:undelete"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      security: {
+        security_requirement: {
+          key: "Bearer";
+          value: {}
+        }
+      }
+    };
+  }
 }
 
 message Principal {
@@ -144,6 +157,10 @@ message DeleteEntryRequest {
 
 message DeleteEntryResponse {
   Entry entry = 1;
+}
+
+message UndeleteEntryRequest {
+  string id = 1;
 }
 
 // Data Mesh
